@@ -80,7 +80,7 @@ class HtmlElement {
      *
      * @return HtmlElement this html component.
      */
-    public function setAttribute(string $key, $value) {
+    public function setAttribute(string $key, $value): HtmlElement {
         $this->attributes[$key] = htmlspecialchars($value);
         return $this;
     }
@@ -91,7 +91,7 @@ class HtmlElement {
      *
      * @return $this html element.
      */
-    public function setAttributes(array $attributes) {
+    public function setAttributes(array $attributes): HtmlElement {
         foreach ($attributes as $key => $value) {
             $this->setAttribute($key, $value);
         }
@@ -110,7 +110,7 @@ class HtmlElement {
      *
      * @return $this html element.
      */
-    public function setValue($value) {
+    public function setValue($value): HtmlElement {
         $this->value = htmlspecialchars($value);
         return $this;
     }
@@ -127,7 +127,7 @@ class HtmlElement {
      *
      * @return $this html element.
      */
-    public function setChildElements(array $childElements) {
+    public function setChildElements(array $childElements): HtmlElement {
         $this->childElements = $childElements;
         return $this;
     }
@@ -135,7 +135,7 @@ class HtmlElement {
     /**
      * Export / print the html element.
      */
-    public function exportHtml() {
+    public function exportHtml(): void {
         // This is faster then string concatenation. https://www.electrictoolbox.com/php-echo-commas-vs-concatenation/
         echo '<', $this->tag, ' ', vsprintf('%k="%v" ', $this->attributes), '>';
         // Print value or child elements

@@ -94,17 +94,17 @@ class RestApi {
      * @return string The json encoded data.
      * @throws Exception if the endpoint file id not found.
      */
-    public function processApi(string $apiPath = 'api/') {
+    public function processApi(string $apiPath = 'endpoints/'): string {
         // Check to see if the api file exists before including it
-        if (file_exists($apiPath . $this->endpoint . '.php')) {
+        if (file_exists($apiPath . $this->endpoint . '.class.php')) {
             /** @noinspection PhpIncludeInspection */
-            include_once $apiPath . $this->endpoint . '.php';
+            include_once $apiPath . $this->endpoint . '.class.php';
         } else {
             throw new Exception('Unable to find api file');
         }
         // Initialize the api object and class name
         $apiObject = null;
-        $className = 'api' . $this->endpoint;
+        $className = $this->endpoint;
         // Check to see if the api class exists inside the file
         if (class_exists($className)) {
             $apiObject = new $className($this->method, $this->args, $this->file);

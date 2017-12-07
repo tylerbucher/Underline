@@ -77,7 +77,7 @@ class Controller implements IModule {
     /**
      * @param HtmlElement[] $baseElements A list of html elements to be passed to the template.
      */
-    public function setBaseElements(array $baseElements) {
+    public function setBaseElements(array $baseElements): void {
         $this->baseElements = $baseElements;
     }
 }

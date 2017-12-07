@@ -73,7 +73,7 @@ class CookieModule implements IModule, IStorageModule {
      * @param int|null    $sslOnly   Indicates that the cookie should only be transmitted over a secure HTTPS connection from the client.
      * @param int|null    $httpOnly  When TRUE the cookie will be made accessible only through the HTTP protocol.
      */
-    public function setCookie(string $name, $value, int $time = null, string $path = null, string $subDomain = null, int $sslOnly = null, int $httpOnly = null) {
+    public function setCookie(string $name, $value, int $time = null, string $path = null, string $subDomain = null, int $sslOnly = null, int $httpOnly = null): void {
         if ($time == null) $time = time() * $this->configModule->getCookieDefaultExpireTime();
         if ($path == null) $path = $this->configModule->getCookieDefaultPath();
         if ($subDomain == null) $subDomain = $this->configModule->getCookieDefaultSubDomain();
@@ -98,7 +98,7 @@ class CookieModule implements IModule, IStorageModule {
      *
      * @return bool True if the cookie was removed false otherwise.
      */
-    public function removeCookie(string $name, string $path = null) {
+    public function removeCookie(string $name, string $path = null): bool {
         if (isset($_COOKIE[$name])) {
             unset($_COOKIE[$name]);
             $this->setCookie($name, '', $this->configModule->getCookieDefaultRemoveTime(), $path);

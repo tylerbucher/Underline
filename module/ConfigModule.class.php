@@ -91,6 +91,7 @@ class ConfigModule implements IModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     * @throws \Exception if file exists but can not be read.
      */
     public function init(): void {
         $fileName = '../config.json';
@@ -148,7 +149,7 @@ class ConfigModule implements IModule {
     /**
      * @param string $ApiLogFile The api log file.
      */
-    public function setApiLogFile(string $ApiLogFile) {
+    public function setApiLogFile(string $ApiLogFile): void {
         $this->ApiLogFile = $ApiLogFile;
     }
 
@@ -162,7 +163,7 @@ class ConfigModule implements IModule {
     /**
      * @param string $sessionName The name of the php session.
      */
-    public function setSessionName(string $sessionName) {
+    public function setSessionName(string $sessionName): void {
         $this->sessionName = $sessionName;
     }
 
@@ -176,7 +177,7 @@ class ConfigModule implements IModule {
     /**
      * @param string $sessionDefaultNamespace The name of the php default name space index in the SESSION var.
      */
-    public function setSessionDefaultNamespace(string $sessionDefaultNamespace) {
+    public function setSessionDefaultNamespace(string $sessionDefaultNamespace): void {
         $this->sessionDefaultNamespace = $sessionDefaultNamespace;
     }
 
@@ -190,7 +191,7 @@ class ConfigModule implements IModule {
     /**
      * @param int $cookieDefaultExpireTime The default time for which a cookie should expire.
      */
-    public function setCookieDefaultExpireTime(int $cookieDefaultExpireTime) {
+    public function setCookieDefaultExpireTime(int $cookieDefaultExpireTime): void {
         $this->cookieDefaultExpireTime = $cookieDefaultExpireTime;
     }
 
@@ -204,7 +205,7 @@ class ConfigModule implements IModule {
     /**
      * @param string $cookieDefaultPath The default path for the cookie.
      */
-    public function setCookieDefaultPath(string $cookieDefaultPath) {
+    public function setCookieDefaultPath(string $cookieDefaultPath): void {
         $this->cookieDefaultPath = $cookieDefaultPath;
     }
 
@@ -218,7 +219,7 @@ class ConfigModule implements IModule {
     /**
      * @param string $cookieDefaultSubDomain The default sub domain for the cookie.
      */
-    public function setCookieDefaultSubDomain(string $cookieDefaultSubDomain) {
+    public function setCookieDefaultSubDomain(string $cookieDefaultSubDomain): void {
         $this->cookieDefaultSubDomain = $cookieDefaultSubDomain;
     }
 
@@ -232,7 +233,7 @@ class ConfigModule implements IModule {
     /**
      * @param int $cookieDefaultSsl The default ssl state for the cookie.
      */
-    public function setCookieDefaultSsl(int $cookieDefaultSsl) {
+    public function setCookieDefaultSsl(int $cookieDefaultSsl): void {
         $this->cookieDefaultSsl = $cookieDefaultSsl;
     }
 
@@ -246,21 +247,21 @@ class ConfigModule implements IModule {
     /**
      * @param int $cookieDefaultHttp The default http state for the cookie.
      */
-    public function setCookieDefaultHttp(int $cookieDefaultHttp) {
+    public function setCookieDefaultHttp(int $cookieDefaultHttp): void {
         $this->cookieDefaultHttp = $cookieDefaultHttp;
     }
 
     /**
      * @return int The time to set the cookie expired.
      */
-    public function getCookieDefaultRemoveTime() {
+    public function getCookieDefaultRemoveTime(): int {
         return $this->cookieDefaultRemoveTime;
     }
 
     /**
      * @param int|string $cookieDefaultRemoveTime The time to set the cookie expired.
      */
-    public function setCookieDefaultRemoveTime($cookieDefaultRemoveTime) {
+    public function setCookieDefaultRemoveTime($cookieDefaultRemoveTime): void {
         $this->cookieDefaultRemoveTime = is_string($cookieDefaultRemoveTime) ?
             strtotime($cookieDefaultRemoveTime) : $cookieDefaultRemoveTime;
     }

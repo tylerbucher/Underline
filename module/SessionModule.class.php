@@ -70,7 +70,7 @@ class SessionModule implements IModule, IStorageModule {
      * @param mixed       $value     The value to store in the session.
      * @param string|null $namespace If this is left out this library with use the sessionDefaultNamespace from ConfigModule.
      */
-    public function setData(string $key, $value, string $namespace = null) {
+    public function setData(string $key, $value, string $namespace = null): void {
         if ($namespace == null) $namespace = $this->configModule->getSessionDefaultNamespace();
         $_SESSION[$namespace][$key] = $value;
     }
@@ -87,10 +87,10 @@ class SessionModule implements IModule, IStorageModule {
     }
 
     /**
-     * @param string|null $namespace
-     * @param string|null $key
+     * @param string|null $namespace If this is left out this library with use the sessionDefaultNamespace from ConfigModule.
+     * @param string|null $key       The key to fetch the value at in the session.
      */
-    public function clearData(string $namespace = null, string $key = null) {
+    public function clearData(string $namespace = null, string $key = null): void {
         if ($namespace == null) {
             // Do NOT unset the whole $_SESSION with unset($_SESSION) as this will disable the registering of session
             // variables through the $_SESSION superglobal.
@@ -106,7 +106,7 @@ class SessionModule implements IModule, IStorageModule {
     /**
      * Destroys the session.
      */
-    public function destroySession() {
+    public function destroySession(): void {
         session_destroy();
     }
 }
