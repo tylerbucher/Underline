@@ -63,10 +63,10 @@ class CookieModule implements IModule, IStorageModule {
      * @param int|null    $time      The time the cookie expires. This is a Unix timestamp so is in number of seconds since the epoch.
      * @param string|null $path      The path on the server in which the cookie will be available on. If set to '/', the cookie will be available within the entire domain.
      * @param string|null $subDomain he (sub)domain that the cookie is available to.
-     * @param int|null    $sslOnly   Indicates that the cookie should only be transmitted over a secure HTTPS connection from the client.
-     * @param int|null    $httpOnly  When TRUE the cookie will be made accessible only through the HTTP protocol.
+     * @param bool|null    $sslOnly   Indicates that the cookie should only be transmitted over a secure HTTPS connection from the client.
+     * @param bool|null    $httpOnly  When TRUE the cookie will be made accessible only through the HTTP protocol.
      */
-    public function setCookie(string $name, $value, int $time = null, string $path = null, string $subDomain = null, int $sslOnly = null, int $httpOnly = null): void {
+    public function setCookie(string $name, $value, int $time = null, string $path = null, string $subDomain = null, bool $sslOnly = null, bool $httpOnly = null): void {
         if ($time == null) $time = time() * $this->configModule->getCookieDefaultExpireTime();
         if ($path == null) $path = $this->configModule->getCookieDefaultPath();
         if ($subDomain == null) $subDomain = $this->configModule->getCookieDefaultSubDomain();
@@ -94,7 +94,7 @@ class CookieModule implements IModule, IStorageModule {
     public function removeCookie(string $name, string $path = null): bool {
         if (isset($_COOKIE[$name])) {
             unset($_COOKIE[$name]);
-            $this->setCookie($name, '', $this->configModule->getCookieDefaultRemoveTime(), $path);
+            $this->setCookie($name, '', time() - $this->configModule->getCookieDefaultRemoveTime(), $path);
             return true;
         }
         return false;

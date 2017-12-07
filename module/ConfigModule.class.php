@@ -35,32 +35,32 @@ class ConfigModule implements IModule {
     /**
      * @var bool Should the library log any api issues.
      */
-    private $logApiIssues;
+    private $logApiIssues = false;
 
     /**
      * @var string The api log file.
      */
-    private $ApiLogFile;
+    private $ApiLogFile = 'api.log';
 
     /**
      * @var string The name of the php session.
      */
-    private $sessionName;
+    private $sessionName = 'underline';
 
     /**
      * @var string The name of the php default name space index in the SESSION var.
      */
-    private $sessionDefaultNamespace;
+    private $sessionDefaultNamespace = 'underline';
 
     /**
      * @var string|int The default time for which a cookie should expire.
      */
-    private $cookieDefaultExpireTime;
+    private $cookieDefaultExpireTime = '604800';
 
     /**
      * @var string The default path for the cookie.
      */
-    private $cookieDefaultPath;
+    private $cookieDefaultPath = '/';
 
     /**
      * @var string The default sub domain for the cookie.
@@ -68,19 +68,19 @@ class ConfigModule implements IModule {
     private $cookieDefaultSubDomain;
 
     /**
-     * @var int The default ssl state for the cookie.
+     * @var bool The default ssl state for the cookie.
      */
-    private $cookieDefaultSsl;
+    private $cookieDefaultSsl = true;
 
     /**
-     * @var int The default http state for the cookie.
+     * @var bool The default http state for the cookie.
      */
-    private $cookieDefaultHttp;
+    private $cookieDefaultHttp = true;
 
     /**
      * @var string|int The time to set the cookie expired.
      */
-    private $cookieDefaultRemoveTime;
+    private $cookieDefaultRemoveTime = '3600';
 
     /**
      * Initialize all required properties and functions for the Module.
@@ -217,30 +217,30 @@ class ConfigModule implements IModule {
     }
 
     /**
-     * @return int The default ssl state for the cookie.
+     * @return bool The default ssl state for the cookie.
      */
-    public function getCookieDefaultSsl(): int {
+    public function getCookieDefaultSsl(): bool {
         return $this->cookieDefaultSsl;
     }
 
     /**
-     * @param int $cookieDefaultSsl The default ssl state for the cookie.
+     * @param bool $cookieDefaultSsl The default ssl state for the cookie.
      */
-    public function setCookieDefaultSsl(int $cookieDefaultSsl): void {
+    public function setCookieDefaultSsl(bool $cookieDefaultSsl): void {
         $this->cookieDefaultSsl = $cookieDefaultSsl;
     }
 
     /**
-     * @return int The default http state for the cookie.
+     * @return bool The default http state for the cookie.
      */
-    public function getCookieDefaultHttp(): int {
+    public function getCookieDefaultHttp(): bool {
         return $this->cookieDefaultHttp;
     }
 
     /**
-     * @param int $cookieDefaultHttp The default http state for the cookie.
+     * @param bool $cookieDefaultHttp The default http state for the cookie.
      */
-    public function setCookieDefaultHttp(int $cookieDefaultHttp): void {
+    public function setCookieDefaultHttp(bool $cookieDefaultHttp): void {
         $this->cookieDefaultHttp = $cookieDefaultHttp;
     }
 
