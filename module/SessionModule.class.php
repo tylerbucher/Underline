@@ -47,13 +47,6 @@ class SessionModule implements IModule, IStorageModule {
     }
 
     /**
-     * Require all files that this module will be using.
-     */
-    public function require(): void {
-        // No external files needed at this time.
-    }
-
-    /**
      * Initialize all required properties and functions for the Module.
      */
     public function init(): void {

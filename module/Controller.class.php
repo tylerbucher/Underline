@@ -54,13 +54,6 @@ class Controller implements IModule {
     }
 
     /**
-     * Require all files that this module will be using.
-     */
-    public function require(): void {
-        // Nothing to be required at this time.
-    }
-
-    /**
      * Initialize all required properties and functions for the Module.
      */
     public function init(): void {

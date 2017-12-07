@@ -83,13 +83,6 @@ class ConfigModule implements IModule {
     private $cookieDefaultRemoveTime;
 
     /**
-     * Require all files that this module will be using.
-     */
-    public function require(): void {
-        // No required needed at this time.
-    }
-
-    /**
      * Initialize all required properties and functions for the Module.
      * @throws \Exception if file exists but can not be read.
      */

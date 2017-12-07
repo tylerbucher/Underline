@@ -24,33 +24,12 @@
  * THE SOFTWARE.
  */
 
-namespace Underline\Module;
-
-/**
- * Class ApiModule, used to access the rest portion of this library.
- * @package Underline\Module
- */
-class ApiModule implements IModule {
-
-    /**
-     * @var ConfigModule The configuration module to use.
-     */
-    private $configModule;
-
-    /**
-     * ApiModule constructor.
-     *
-     * @param ConfigModule $configModule The configuration module to use.
-     */
-    public function __construct(ConfigModule $configModule) {
-        $this->configModule = $configModule;
-    }
-
-    /**
-     * Initialize all required properties and functions for the Module.
-     */
-    public function init(): void {
-        ini_set("log_errors", $this->configModule->isLogApiIssues());
-        ini_set("error_log", $this->configModule->getApiLogFile());
-    }
-}
+require_once 'module/IModule.class.php';
+require_once 'module/IStorageModule.class.php';
+require_once 'module/ConfigModule.class.php';
+require_once 'module/ApiModule.class.php';
+require_once 'module/CookieModule.class.php';
+require_once 'module/SessionModule.class.php';
+require_once 'module/Controller.class.php';
+require_once 'HtmlElement.class.php';
+require_once 'RestApi.class.php';

@@ -33,11 +33,6 @@ namespace Underline\Module;
 interface IModule {
 
     /**
-     * Require all files that this module will be using.
-     */
-    public function require(): void;
-
-    /**
      * Initialize all required properties and functions for the Module.
      */
     public function init(): void;
