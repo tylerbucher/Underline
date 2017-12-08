@@ -50,9 +50,9 @@ class RestApi {
     protected $args = Array();
 
     /**
-     * @var bool|null|string Stores the input of the PUT request.
+     * @var string Stores the input of the PUT request.
      */
-    protected $file = null;
+    protected $file = '';
 
     /**
      * Allow for CORS to assemble and pre-process the data.
@@ -85,6 +85,7 @@ class RestApi {
         // Set file input for PUT request
         if ($this->method == 'PUT') {
             $this->file = file_get_contents('php://input');
+            $this->file = $this->file == false ? '' : $this->file;
         }
     }
 
