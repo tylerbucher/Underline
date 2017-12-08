@@ -111,11 +111,11 @@ class RestApi {
         if (class_exists($className)) {
             $apiObject = new $className($this->method, $this->args, $this->file);
         } else {
-            return $this->_response("No Endpoint: $this->endpoint", 404);
+            return $this->_response(array('error' => "No Endpoint: $this->endpoint"), 404);
         }
         // Check to see if the api implements the ControllerInterface
         if (!$apiObject instanceof ApiEndpoint) {
-            return $this->_response("Endpoint configuration error: $this->endpoint", 500);
+            return $this->_response(array('error' => "Endpoint configuration error: $this->endpoint"), 500);
         }
         return $this->_response($apiObject->handle());
     }
