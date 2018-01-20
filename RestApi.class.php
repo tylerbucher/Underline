@@ -50,7 +50,7 @@ class RestApi {
     protected $args = Array();
 
     /**
-     * @var string Stores the input of the PUT request.
+     * @var string Stores the input of the PUT or POST request.
      */
     protected $file = '';
 
@@ -83,7 +83,7 @@ class RestApi {
             }
         }
         // Set file input for PUT request
-        if ($this->method == 'PUT') {
+        if ($this->method == 'PUT' || $this->method == 'POST' || $this->method == 'PATCH') {
             $this->file = file_get_contents('php://input');
             $this->file = $this->file == false ? '' : $this->file;
         }

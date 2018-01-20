@@ -65,7 +65,7 @@ class ConfigModule implements IModule {
     /**
      * @var string The default sub domain for the cookie.
      */
-    private $cookieDefaultSubDomain;
+    private $cookieDefaultSubDomain = "";
 
     /**
      * @var bool The default ssl state for the cookie.
@@ -87,7 +87,7 @@ class ConfigModule implements IModule {
      * @throws \Exception if file exists but can not be read.
      */
     public function init(): void {
-        $fileName = '../config.json';
+        $fileName = 'config.json';
         if (!file_exists($fileName)) {
             $configFile = fopen($fileName, 'w');
             fwrite($configFile, json_encode($this->exportConfigurationArray()));
@@ -112,6 +112,9 @@ class ConfigModule implements IModule {
         return $exportArray;
     }
 
+    /**
+     * @param array $configValues array of config values to set.
+     */
     public function initConfigValues(array $configValues): void {
         foreach (get_object_vars($this) as $key => $value) {
             $this->{$key} = $configValues[$key];
