@@ -42,7 +42,7 @@ class Controller implements IModule {
     /**
      * @var HtmlElement[] A list of html elements to be passed to the template.
      */
-    private $baseElements;
+    private $baseElements = array();
 
     /**
      * Controller constructor.
@@ -55,9 +55,18 @@ class Controller implements IModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
      */
-    public function init(): void {
+    public function init(array $args): void {
         // Nothing to be initialized at this time.
+    }
+
+    /**
+     * @return ConfigModule The config module.
+     */
+    public function getConfigModule(): ConfigModule {
+        return $this->configModule;
     }
 
     /**

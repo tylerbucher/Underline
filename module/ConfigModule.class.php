@@ -84,17 +84,19 @@ class ConfigModule implements IModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
+     *
      * @throws \Exception if file exists but can not be read.
      */
-    public function init(): void {
-        $fileName = 'config.json';
-        if (!file_exists($fileName)) {
-            $configFile = fopen($fileName, 'w');
+    public function init(array $args): void {
+        if (!file_exists($args[0])) {
+            $configFile = fopen($args[0], 'w');
             fwrite($configFile, json_encode($this->exportConfigurationArray()));
             fclose($configFile);
-        } else if (is_readable($fileName)) {
-            $configFile = fopen($fileName, 'r');
-            $this->initConfigValues(json_decode(fread($configFile, filesize($fileName)), true));
+        } else if (is_readable($args[0])) {
+            $configFile = fopen($args[0], 'r');
+            $this->initConfigValues(json_decode(fread($configFile, filesize($args[0])), true));
             fclose($configFile);
         } else {
             throw new \Exception('Can not open file for reading.');

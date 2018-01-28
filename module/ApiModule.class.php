@@ -48,8 +48,10 @@ class ApiModule implements IModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
      */
-    public function init(): void {
+    public function init(array $args): void {
         ini_set("log_errors", $this->configModule->isLogApiIssues());
         ini_set("error_log", $this->configModule->getApiLogFile());
     }

@@ -48,8 +48,10 @@ class SessionModule implements IModule, IStorageModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
      */
-    public function init(): void {
+    public function init(array $args): void {
         // Set the php session name
         session_name($this->configModule->getSessionName());
         // Best way to start php session for PHP >= 5.4.0 (https://stackoverflow.com/a/18542272/2949095)

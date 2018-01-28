@@ -48,8 +48,10 @@ class CookieModule implements IModule, IStorageModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
      */
-    public function init(): void {
+    public function init(array $args): void {
         // Nothing to be initialized at this time.
     }
 
@@ -67,7 +69,7 @@ class CookieModule implements IModule, IStorageModule {
      * @param bool|null    $httpOnly  When TRUE the cookie will be made accessible only through the HTTP protocol.
      */
     public function setCookie(string $name, $value, int $time = null, string $path = null, string $subDomain = null, bool $sslOnly = null, bool $httpOnly = null): void {
-        if ($time == null) $time = time() * $this->configModule->getCookieDefaultExpireTime();
+        if ($time == null) $time = time() + $this->configModule->getCookieDefaultExpireTime();
         if ($path == null) $path = $this->configModule->getCookieDefaultPath();
         if ($subDomain == null) $subDomain = $this->configModule->getCookieDefaultSubDomain();
         if ($sslOnly == null) $sslOnly = $this->configModule->getCookieDefaultSsl();

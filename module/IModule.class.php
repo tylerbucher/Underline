@@ -34,6 +34,8 @@ interface IModule {
 
     /**
      * Initialize all required properties and functions for the Module.
+     *
+     * @param array $args A list if arguments if needed.
      */
-    public function init(): void;
+    public function init(array $args): void;
 }
