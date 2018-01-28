@@ -37,5 +37,5 @@ interface IModule {
      *
      * @param array $args A list if arguments if needed.
      */
-    public function init(array $args): void;
+    public function init(array $args = null): void;
 }

@@ -89,7 +89,7 @@ class ConfigModule implements IModule {
      *
      * @throws \Exception if file exists but can not be read.
      */
-    public function init(array $args): void {
+    public function init(array $args = null): void {
         if (!file_exists($args[0])) {
             $configFile = fopen($args[0], 'w');
             fwrite($configFile, json_encode($this->exportConfigurationArray()));

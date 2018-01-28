@@ -51,7 +51,7 @@ class CookieModule implements IModule, IStorageModule {
      *
      * @param array $args A list if arguments if needed.
      */
-    public function init(array $args): void {
+    public function init(array $args = null): void {
         // Nothing to be initialized at this time.
     }
 
