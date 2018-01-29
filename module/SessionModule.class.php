@@ -79,7 +79,7 @@ class SessionModule implements IModule, IStorageModule {
      */
     public function getData(string $key, string $namespace = null) {
         if ($namespace == null) $namespace = $this->configModule->getSessionDefaultNamespace();
-        return $_SESSION[$namespace][$key];
+        return isset($_SESSION[$namespace]) ? $_SESSION[$namespace][$key] : null;
     }
 
     /**
