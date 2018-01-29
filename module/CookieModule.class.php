@@ -83,8 +83,7 @@ class CookieModule implements IModule, IStorageModule {
      * @return mixed|null The cookie if found otherwise null.
      */
     public function getCookie(string $name) {
-        $wantedCookie = $_COOKIE[$name];
-        return isset($wantedCookie) ? $wantedCookie : null;
+        return isset($_COOKIE[$name]) ? $_COOKIE[$name] : null;
     }
 
     /**
